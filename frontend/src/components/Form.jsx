@@ -10,7 +10,8 @@ function Form() {
     try {
       e.preventDefault();
       const response = await sendToBackArduino({ msg: textMsg });
-      setListMsg(listMsg.concat(response.message))
+     setListMsg(prev => prev.concat([response.message, response.msg]));
+
     } catch (error) {
       console.log(error);
     }

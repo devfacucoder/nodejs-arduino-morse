@@ -11,7 +11,7 @@ function useApi() {
       });
       if (response.ok) {
         const data = await response.json();
-        return data
+        return data;
         console.log(data);
       }
     } catch (error) {
@@ -26,13 +26,32 @@ function useApi() {
         const data = await response.json();
         return data;
       }
+
+      return {message:"error en el puerto reconecta el arduino"}
+
+    } catch (error) {
+      console.log(error);
+      return {message:"error en el puerto reconecta el arduino"}
+    }
+  };
+
+  const getChannels = async () => {
+    try {
+      const response = await fetch(urlBack + "/channel");
+
+      if (response.ok) {
+        const data = await response.json();
+        return data.data;
+      }
     } catch (error) {
       console.log(error);
     }
   };
+
   return {
     sendToBackArduino,
     connectToArduino,
+    getChannels,
   };
 }
 export default useApi;

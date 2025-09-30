@@ -47,10 +47,10 @@ const sendMsgToArduino = (msg) => {
       port.write(msg, (err) => {
         if (err) {
           console.error("❌ Error al escribir:", err);
-          resolve({ message: "Error al escribir", code: 403 });
+          resolve({ message: "Error al escribir" });
         } else {
           console.log("📤 Mensaje enviado al Arduino:", msg);
-          resolve({ message: "Mensaje enviado", code: 200 });
+          resolve({ message: "Mensaje enviado ", msg });
         }
       });
     }, 2000);

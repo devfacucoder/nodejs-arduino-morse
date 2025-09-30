@@ -7,8 +7,16 @@ function ConnectArduino() {
 
   const { connectToArduino } = useApi();
   const handleConnectToArduino = async () => {
-    const response = await connectToArduino();
-    setListMsg(listMsg.concat(response.message));
+    try {
+      const response = await connectToArduino();
+      console.log(response);
+      if (response.message) {
+        setListMsg((prev) => prev.concat([response.message]));
+      }
+    } catch (error) {
+      console.log(error)
+
+    }
   };
   return (
     <div>
