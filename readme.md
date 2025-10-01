@@ -10,8 +10,17 @@ This project enables communication between a Node.js backend, a React frontend, 
 
 ## Project Structure
 
- ├── backend/ │ ├── arduinoCode/ │ │ └── morseArduino.ino │ ├── conection.js │ └── index.js ├── frontend/ │ ├── src/ │ └── ... ├── main.js ├── package.json └── README.md
-
+ ├── backend/
+ │   ├── arduinoCode/
+ │   │   └── morseArduino.ino
+ │   ├── conection.js
+ │   └── index.js
+ ├── frontend/
+ │   ├── src/
+ │   └── ...
+ ├── main.js
+ ├── package.json
+ └── README.md
 
 ## How It Works
 
@@ -24,18 +33,47 @@ This project enables communication between a Node.js backend, a React frontend, 
 ### Prerequisites
 
 - Node.js
-- Arduino (with LED connected to pin 13)
+- Arduino (with LED connected to pin 12)
 - npm
 
 ### Installation
 
-1. Clone the repository.
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/devfacucoder/nodejs-arduino-morse
+   cd nodejs-arduino-morse
+   ```
 2. Install backend dependencies:
    ```sh
    npm install
-
-
+   ```
+3. Install frontend dependencies and start development server:
+   ```sh
    cd frontend
-npm install
+   npm install
+   npm run dev
+   ```
+4. Start Electron.js:
+   ```sh
+   npx electron .
+   ```
 
-Running the Project
+## Usage
+
+- Open the Electron app.
+- Use the frontend to connect to the Arduino and send messages.
+- View available serial ports and message logs in the console.
+
+## Troubleshooting
+
+- **Serial Port Not Found**: Make sure your Arduino is connected and the correct port is specified in [`backend/conection.js`](backend/conection.js).
+- **Frontend Not Loading**: Ensure the Vite dev server is running (`npm run dev` in the `frontend` folder).
+- **Electron Issues**: Check that Electron is installed and the backend server is running.
+
+## Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+This project is licensed under the ISC License.
